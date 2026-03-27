@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "FastTab",
+  "version": "1.0.0",
+  "description": "A fast, clean new tab page for quick access to AI applications",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "icons": {
+    "16": "icon.svg",
+    "48": "icon.svg",
+    "128": "icon.svg"
+  }
+}

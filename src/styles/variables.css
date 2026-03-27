@@ -1,0 +1,13 @@
+:root {
+  --bg-color: #f5f7fa;
+  --text-color: #2c3e50;
+  --card-bg: #ffffff;
+  --card-hover: #f8f9fa;
+  --border-color: #e1e8ed;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.12);
+  --primary-color: #3498db;
+  --secondary-color: #6366f1;
+  --danger-color: #ef4444;
+  --shortcut-size: 48px;
+}
