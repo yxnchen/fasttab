@@ -105,7 +105,7 @@ const handleExport = (format: 'json' | 'txt') => {
   background: none;
   border: none;
   font-size: 28px;
-  color: #999;
+  color: var(--text-muted);
   cursor: pointer;
   padding: 0;
   width: 32px;
@@ -183,7 +183,7 @@ const handleExport = (format: 'json' | 'txt') => {
 
 .export-option-desc {
   font-size: 13px;
-  color: #999;
+  color: var(--text-muted);
   margin-top: 2px;
 }
 

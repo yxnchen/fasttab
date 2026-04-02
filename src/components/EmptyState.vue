@@ -9,24 +9,16 @@
     </div>
     <h2>Welcome to FastTab!</h2>
     <p>Create your first group to get started with organizing your AI applications.</p>
-    <button class="btn-primary" @click="showCreateGroup = true">
+    <button class="btn-primary" @click="$emit('createFirstGroup')">
       Create Your First Group
     </button>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-
-const showCreateGroup = ref(false)
-
 defineEmits<{
   createFirstGroup: []
 }>()
-
-defineExpose({
-  showCreateGroup
-})
 </script>
 
 <style scoped>
@@ -56,7 +48,7 @@ h2 {
 p {
   margin: 0 0 32px 0;
   font-size: 16px;
-  color: #666;
+  color: var(--text-secondary);
   max-width: 400px;
 }
 

@@ -158,7 +158,7 @@ input:focus {
   display: block;
   margin-top: 4px;
   font-size: 12px;
-  color: #666;
+  color: var(--text-muted);
 }
 
 .form-actions {
@@ -184,7 +184,7 @@ button {
 }
 
 .btn-cancel:hover {
-  background: #e5e7eb;
+  background: var(--cancel-hover-bg);
 }
 
 .btn-primary {

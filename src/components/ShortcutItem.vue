@@ -15,7 +15,6 @@
       <div class="shortcut-name">{{ shortcut.name }}</div>
     </a>
     
-    <!-- 删除按钮（右上角） -->
     <button 
       class="delete-btn"
       @click.stop="handleDelete"
@@ -26,7 +25,6 @@
       </svg>
     </button>
     
-    <!-- 编辑按钮（右下角） -->
     <button 
       class="edit-btn"
       @click.stop="handleEdit"
@@ -37,7 +35,6 @@
       </svg>
     </button>
     
-    <!-- 复制URL按钮（右侧中央） -->
     <button 
       class="copy-btn"
       :class="{ copied }"
@@ -85,14 +82,12 @@ const handleCopy = async () => {
     await navigator.clipboard.writeText(props.shortcut.url)
     copied.value = true
     
-    // 2秒后重置状态
     if (copyTimeout) clearTimeout(copyTimeout)
     copyTimeout = setTimeout(() => {
       copied.value = false
     }, 2000)
   } catch (err) {
     console.error('Failed to copy:', err)
-    // 降级方案：使用document.execCommand
     const textarea = document.createElement('textarea')
     textarea.value = props.shortcut.url
     document.body.appendChild(textarea)
@@ -106,9 +101,6 @@ const handleCopy = async () => {
       copied.value = false
     }, 2000)
   }
-}
-
-const handleContextMenu = () => {
 }
 </script>
 
@@ -153,8 +145,8 @@ const handleContextMenu = () => {
   border: none;
   border-radius: 50%;
   cursor: pointer;
-  color: #000;
-  background: #fff;
+  color: var(--text-color);
+  background: var(--btn-bg);
   opacity: 0;
   transition: all 0.2s ease;
   z-index: 10;
@@ -190,13 +182,13 @@ const handleContextMenu = () => {
 
 .delete-btn:hover,
 .edit-btn:hover {
-  background: #f5f5f5;
+  background: var(--btn-hover-bg);
   transform: scale(1.1);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .copy-btn:hover {
-  background: #f5f5f5;
+  background: var(--btn-hover-bg);
   transform: translateY(-50%) scale(1.1) translateX(4px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }

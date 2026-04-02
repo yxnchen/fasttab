@@ -304,7 +304,7 @@ h3 {
 
 .count {
   font-size: 12px;
-  color: #999;
+  color: var(--text-muted);
 }
 
 .group-actions {
@@ -414,7 +414,7 @@ h3 {
   align-items: center;
   justify-content: center;
   font-size: 28px;
-  color: #999;
+  color: var(--text-muted);
   font-weight: 600;
   transition: all 0.2s ease;
 }
@@ -426,7 +426,7 @@ h3 {
 
 .add-shortcut-label {
   font-size: 12px;
-  color: #999;
+  color: var(--text-muted);
   font-weight: 500;
   transition: color 0.2s ease;
 }

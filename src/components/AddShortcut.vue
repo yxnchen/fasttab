@@ -93,7 +93,6 @@ const handleUrlBlur = () => {
 }
 
 const handleSubmit = () => {
-  // 确保在提交前获取favicon（如果还没有）
   if (!formData.faviconUrl && validateUrl(formData.url)) {
     formData.faviconUrl = getFaviconUrl(formData.url)
   }
@@ -174,7 +173,7 @@ input:focus {
   display: block;
   margin-top: 4px;
   font-size: 12px;
-  color: #666;
+  color: var(--text-muted);
 }
 
 .form-actions {
@@ -200,7 +199,7 @@ button {
 }
 
 .btn-cancel:hover {
-  background: #e5e7eb;
+  background: var(--cancel-hover-bg);
 }
 
 .btn-primary {

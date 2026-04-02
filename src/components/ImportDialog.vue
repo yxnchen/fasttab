@@ -229,7 +229,7 @@ const handleImport = async () => {
   background: none;
   border: none;
   font-size: 28px;
-  color: #999;
+  color: var(--text-muted);
   cursor: pointer;
   padding: 0;
   width: 32px;
@@ -286,7 +286,7 @@ const handleImport = async () => {
 
 .drop-hint {
   font-size: 13px;
-  color: #999;
+  color: var(--text-muted);
 }
 
 .file-info {
@@ -316,7 +316,7 @@ const handleImport = async () => {
 
 .file-type {
   font-size: 12px;
-  color: #999;
+  color: var(--text-muted);
   margin-top: 2px;
 }
 
@@ -324,7 +324,7 @@ const handleImport = async () => {
   background: none;
   border: none;
   font-size: 20px;
-  color: #999;
+  color: var(--text-muted);
   cursor: pointer;
   padding: 4px 8px;
   border-radius: 4px;
@@ -383,7 +383,7 @@ const handleImport = async () => {
 
 .mode-desc {
   font-size: 12px;
-  color: #999;
+  color: var(--text-muted);
   margin-top: 2px;
 }
 
