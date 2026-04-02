@@ -3,6 +3,9 @@
     <div class="header">
       <h1>FastTab</h1>
       <div class="header-actions">
+        <button class="import-btn" @click="showImportDialog = true" title="Import Data">
+          Import
+        </button>
         <button class="export-btn" @click="showExportDialog = true" title="Export Data">
           Export
         </button>
@@ -42,6 +45,13 @@
       @close="showExportDialog = false"
       @export="handleExport"
     />
+
+    <ImportDialog
+      v-if="showImportDialog"
+      :show="showImportDialog"
+      @close="showImportDialog = false"
+      @imported="handleImported"
+    />
   </div>
 </template>
 
@@ -53,6 +63,7 @@ import { useExport } from './composables/useExport'
 import ShortcutGroup from './components/ShortcutGroup.vue'
 import GroupManager from './components/GroupManager.vue'
 import ExportDialog from './components/ExportDialog.vue'
+import ImportDialog from './components/ImportDialog.vue'
 import EmptyState from './components/EmptyState.vue'
 
 const storage = useStorage()
@@ -63,6 +74,7 @@ const { groupList } = useGroupsData
 
 const showCreateGroup = ref(false)
 const showExportDialog = ref(false)
+const showImportDialog = ref(false)
 const { exportDataToJSON, exportDataToTXT } = useExport()
 
 const { loadGroups, createGroup, removeGroup, updateGroupSettings, toggleGroupCollapse } = useGroupsData
@@ -188,6 +200,11 @@ const handleExport = async (format: 'json' | 'txt') => {
     showExportDialog.value = false
   }
 }
+
+const handleImported = async () => {
+  await loadGroups()
+  showImportDialog.value = false
+}
 </script>
 
 <style>
@@ -213,6 +230,23 @@ const handleExport = async (format: 'json' | 'txt') => {
   display: flex;
   gap: 12px;
   align-items: center;
+}
+
+.import-btn {
+  padding: 8px 16px;
+  background: #16a085;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.import-btn:hover {
+  background: #1abc9c;
+  transform: translateY(-2px);
 }
 
 .export-btn {
