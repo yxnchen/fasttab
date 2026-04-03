@@ -7,7 +7,7 @@
       @click.stop
     >
       <img 
-        :src="shortcut.faviconUrl" 
+        :src="displayFaviconUrl" 
         :alt="shortcut.name"
         class="shortcut-icon"
         @error="handleFaviconError"
@@ -49,14 +49,18 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import type { Shortcut } from '../types/shortcut'
+import { useFavicon } from '../composables/useFavicon'
 
 const props = defineProps<{
   shortcut: Shortcut
 }>()
 
+const { checkIsDefaultFavicon, getDefaultFaviconUrl } = useFavicon()
+
 const copied = ref(false)
+const isDefaultFavicon = ref(false)
 let copyTimeout: number | null = null
 
 const emit = defineEmits<{
@@ -64,9 +68,26 @@ const emit = defineEmits<{
   delete: [id: string]
 }>()
 
-const handleFaviconError = (event: Event) => {
-  const img = event.target as HTMLImageElement
-  img.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23ccc" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>'
+const displayFaviconUrl = computed(() => {
+  if (isDefaultFavicon.value) {
+    return getDefaultFaviconUrl()
+  }
+  return props.shortcut.faviconUrl
+})
+
+onMounted(async () => {
+  if (props.shortcut.faviconUrl) {
+    try {
+      const isDefault = await checkIsDefaultFavicon(props.shortcut.faviconUrl)
+      isDefaultFavicon.value = isDefault
+    } catch (e) {
+      console.error('Failed to check favicon:', e)
+    }
+  }
+})
+
+const handleFaviconError = () => {
+  isDefaultFavicon.value = true
 }
 
 const handleEdit = () => {

@@ -6,6 +6,13 @@ This file contains coding guidelines and build instructions for agentic coding a
 
 FastTab is a Chrome Extension (Manifest V3) for managing AI application shortcuts. Built with Vue 3 Composition API, Vite, and TypeScript.
 
+## Git Commit Rules
+
+- **Only commit and push when explicitly requested by the user**
+- Do NOT automatically commit changes after completing a task
+- Wait for the user to explicitly ask for "commit", "push", or "提交并推送" before performing git operations
+- After implementing features, just confirm completion and wait for user's next instruction
+
 ## Build & Dev Commands
 
 ```bash

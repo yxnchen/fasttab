@@ -13,5 +13,11 @@
     "16": "icon.svg",
     "48": "icon.svg",
     "128": "icon.svg"
-  }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["default-favicon.svg"],
+      "matches": ["<all_urls>"]
+    }
+  ]
 }
